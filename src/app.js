@@ -18,8 +18,8 @@ function registroSistema(callback) {
   accesoUsuario("Ana");
   accesoUsuario("Carlos");
 
-  console.warn(chalk.yellow("⚠️ Capacidad de usuarios alcanzando el límite"));
-  console.error(chalk.red("❌ Error: No se pudo conectar a la base de datos"));
+  console.warn(chalk.yellow(" Capacidad de usuarios alcanzando el límite"));
+  console.error(chalk.red(" Error: No se pudo conectar a la base de datos"));
 
   const usuarios = [
     { nombre: "Carlos", rol: "Admin" },
@@ -30,12 +30,12 @@ function registroSistema(callback) {
 
   // Guardar log en archivo
   fs.writeFileSync("log.txt", JSON.stringify(usuarios, null, 2));
-  console.log(chalk.green("✅ Archivo log.txt creado con información de usuarios"));
+  console.log(chalk.green(" Archivo log.txt creado con información de usuarios"));
 
   setTimeout(() => {
     console.timeEnd("ProcesoPrincipal");
     console.log(chalk.blue.bold("=== Fin del sistema ==="));
-    callback(); // 🔥 volver al menú
+    callback(); 
   }, 3000);
 }
 
@@ -60,7 +60,7 @@ function cliTool(callback) {
       case "salir":
         console.log(chalk.green("[SUCCESS] Saliendo de la CLI..."));
         process.stdin.removeListener("data", listener); // quitar listener CLI
-        callback(); // 🔥 volver al menú
+        callback(); // 
         return;
       default:
         console.log(chalk.yellow("[WARNING] Comando no reconocido (usa hola, tiempo, salir)"));
@@ -79,7 +79,7 @@ function cliTool(callback) {
 function systemMonitor(callback) {
   function mostrarInformacion() {
     console.clear();
-    console.log(chalk.magenta("🖥️  Monitor de Sistema"));
+    console.log(chalk.magenta(" Monitor de Sistema"));
     console.log("========================");
     console.log(`Sistema: ${os.platform()} (${os.arch()})`);
     console.log(`CPU: ${os.cpus()[0].model}`);
@@ -99,7 +99,7 @@ function systemMonitor(callback) {
     if (data.trim() === "") {
       clearInterval(interval);
       process.stdin.removeListener("data", listener);
-      callback(); // 🔥 volver al menú
+      callback(); 
     }
   };
 
@@ -139,7 +139,7 @@ function iniciarMenu() {
         systemMonitor(() => iniciarMenu());
         break;
       case "0":
-        console.log(chalk.green("👋 Saliendo del programa..."));
+        console.log(chalk.green(" Saliendo del programa..."));
         process.exit(0);
         break;
       default:
